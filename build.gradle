@@ -20,6 +20,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'software.amazon.opentelemetry:aws-opentelemetry-agent:1.32.0'
+	implementation 'io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations:2.15.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
