@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.opentelemetry.instrumentation.annotations.WithSpan;
+
 @RestController
 public class RollController {
     private static final Logger logger = LoggerFactory.getLogger(RollController.class);
 
     @GetMapping("/rolldice")
+    @WithSpan
     public String index(@RequestParam("player") Optional<String> player) {
         int result = this.getRandomNumber(1, 6);
         if (player.isPresent()) {
@@ -24,6 +27,7 @@ public class RollController {
         return Integer.toString(result);
     }
 
+    @WithSpan
     private int getRandomNumber(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
